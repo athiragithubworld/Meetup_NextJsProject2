@@ -1,4 +1,6 @@
 import React from "react";
+import { Fragment } from "react";
+import Head from "next/head";
 import MeetupDetails from "../../components/meetups/MeetupDetails";
 import { useRouter } from "next/router";
 import { MongoClient, ObjectId } from "mongodb";
@@ -39,8 +41,12 @@ const meetupIdIndex = (props) => {
 
   // console.log("teamdata", teamData);
   return (
-    <div>
+    <Fragment>
       {/* {teamData && ( */}
+      <Head>
+        <title>{props.meetupData.title}</title>
+        <meta name="description" content={props.meetupData.description} />
+      </Head>
       <MeetupDetails
         title={props.meetupData.title}
         image={props.meetupData.image}
@@ -48,7 +54,7 @@ const meetupIdIndex = (props) => {
         description={props.meetupData.description}
       ></MeetupDetails>
       {/* )} */}
-    </div>
+    </Fragment>
   );
 };
 
